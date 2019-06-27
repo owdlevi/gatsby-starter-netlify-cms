@@ -8,9 +8,10 @@ public_folder: /img
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "src/pages/blog"
+    folder: "src/pages/blog" 
+    # instead of blog try {{pageStructure}}? Can the folder where save the markdown to be dynamic?
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "about/{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
@@ -20,6 +21,9 @@ collections:
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Post Author", name: "author", widget: "relation",collection: "authors" , searchFields: ["name"],valueField: "name", 
+displayFields: ["name" ] }
+      # Options for select box, to select category? already created category????
 
   - name: "pages"
     label: "Pages"
@@ -58,3 +62,12 @@ collections:
           - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
           - {label: Full_image, name: full_image, widget: image}
           - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+    - name: "authors"
+      label: "Author"
+      folder: "src/pages/authors" 
+      # instead of blog try {{pageStructure}}? Can the folder where save the markdown to be dynamic?
+      create: true
+      slug: "author/{{slug}}"
+      fields:
+        - {label: "Template Key", name: "templateKey", widget: "hidden", default: "author"}
+        - {label: "Name", name: "name", widget: "string"}
