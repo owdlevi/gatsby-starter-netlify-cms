@@ -14,6 +14,7 @@ collections:
     slug: "author/{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "author"}
+      - {label: "Slug", name: "title", widget: "string"}
       - {label: "Name", name: "name", widget: "string"}
 
   - name: "blog"
